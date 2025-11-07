@@ -1,5 +1,13 @@
 import Image from "next/image";
 
+const navItems = [
+  { id: "hero", label: "Главная" },
+  { id: "custom-business", label: "Бизнес на заказ" },
+  { id: "owners", label: "Собственникам" },
+  { id: "projects", label: "Объекты" },
+  { id: "partners", label: "Партнёры" },
+];
+
 const sections = [
   {
     id: "services",
@@ -47,99 +55,91 @@ const sections = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#F8FAFC] via-white to-[#F8FAFC] text-[#0A0E1A]">
-      <header className="sticky top-0 z-50 border-b border-[#E5E7EB]/80 bg-[#F8FAFC]/95 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
-          <a href="#hero" className="flex items-center gap-3">
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#001DFF] shadow-lg shadow-[#001DFF]/25">
-              <Image src="/logo.svg" alt="Логотип компании" width={28} height={28} className="h-7 w-7" />
-            </span>
-            <span className="hidden text-sm font-semibold uppercase tracking-[0.3em] text-[#000433] sm:block">
-              Индустриальные решения
-            </span>
-          </a>
-          <nav className="hidden flex-1 items-center justify-center gap-8 text-xs font-semibold uppercase tracking-[0.3em] text-[#6B7280] md:flex">
-            {sections.map((section) => (
-              <a
-                key={section.id}
-                href={`#${section.id}`}
-                className="transition-colors duration-200 hover:text-[#001DFF]"
-              >
-                {section.title}
-              </a>
-            ))}
-          </nav>
-          <a
-            href="#contacts"
-            className="hidden rounded-full bg-[#001DFF] px-6 py-3 text-xs font-semibold uppercase tracking-[0.25em] text-white transition-colors duration-200 hover:bg-[#000D99] md:inline-flex"
-          >
-            Связаться
-          </a>
-          <a
-            href="#contacts"
-            className="inline-flex items-center justify-center rounded-full bg-[#001DFF] px-5 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white transition-colors duration-200 hover:bg-[#000D99] md:hidden"
-          >
-            Связаться
-          </a>
+    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-zinc-950/80 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+          <Image
+            src="/group.svg"
+            alt="Логотип Group"
+            width={160}
+            height={80}
+            className="h-9 w-auto"
+            priority
+          />
+          <div className="hidden items-center gap-8 md:flex">
+            <nav className="flex gap-6 text-xs font-semibold uppercase tracking-[0.35em] text-zinc-300">
+              {navItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className="transition-colors duration-200 hover:text-white"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+            <a
+              href="#contacts"
+              className="rounded-full bg-[#f8c545] px-6 py-2 text-[11px] font-bold uppercase tracking-[0.4em] text-zinc-950 transition hover:bg-[#ffd669]"
+            >
+              Заказать консультацию
+            </a>
+          </div>
         </div>
       </header>
 
       <main>
-        <section id="hero" className="border-b border-[#001DFF]/10 bg-gradient-to-r from-[#000433] via-[#000D99] to-[#001DFF] text-white">
-          <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-28 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-xs uppercase tracking-[0.4em] text-[#FFB800]">Header + Hero</p>
-              <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white md:text-5xl">
-                Заголовок главного предложения
+        <section
+          id="hero"
+          className="relative isolate overflow-hidden border-b border-white/10 bg-[#040d1f]"
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(120deg, rgba(8, 20, 45, 0.95), rgba(10, 34, 74, 0.92)), url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=1600&q=80')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#040d1f]/60 to-[#07152c]" />
+          <div className="relative mx-auto max-w-6xl px-6 py-28 md:py-36">
+            <div className="max-w-3xl space-y-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.5em] text-[#7aa6ff]">
+                Invest Urban Rent
+              </p>
+              <h1 className="text-4xl font-bold leading-tight text-white md:text-6xl">
+                Мы создаём пространства коммерческой недвижимости и управляем ими для стабильного
+                пассивного дохода
               </h1>
-              <p className="mt-6 text-base text-white/80 md:text-lg">
-                Расскажите о ключевом преимуществе и уникальном предложении компании. В этом блоке
-                можно разместить краткое описание продукта или сервиса, призыв к действию и ссылки
-                на важные разделы сайта.
+              <p className="max-w-2xl text-base text-white/80 md:text-lg">
+                Берём на себя полный цикл: от подбора и проектирования до операционного управления
+                объектами, чтобы вы получали предсказуемый результат и уверенность в будущем.
               </p>
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4">
                 <a
-                  href="#contacts"
-                  className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#001DFF] transition hover:bg-[#FFB800]/20"
+                  href="#about"
+                  className="rounded-full bg-[#f8c545] px-8 py-3 text-xs font-bold uppercase tracking-[0.45em] text-zinc-950 transition hover:bg-[#ffd669]"
                 >
-                  Связаться с нами
+                  Узнать больше
                 </a>
                 <a
-                  href="#projects"
-                  className="rounded-full border border-white/50 px-6 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
+                  href="#custom-business"
+                  className="rounded-full border border-white/40 px-8 py-3 text-xs font-bold uppercase tracking-[0.45em] text-white transition hover:border-white hover:bg-white/10"
                 >
-                  Смотреть проекты
+                  Бизнес на заказ
                 </a>
-              </div>
-            </div>
-            <div className="grid w-full max-w-md gap-4 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-2xl backdrop-blur">
-              <span className="text-sm uppercase tracking-[0.3em] text-white/80">Краткая справка</span>
-              <p className="text-sm text-white/80">
-                Используйте карточку для подсветки достижения, статистики или важного факта. Вы
-                можете заменить этот текст списком или диаграммой.
-              </p>
-              <div className="flex gap-6 text-sm text-white/80">
-                <div>
-                  <p className="text-3xl font-semibold text-white">24+</p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.25em] text-white/70">
-                    Реализованных проектов
-                  </p>
-                </div>
-                <div>
-                  <p className="text-3xl font-semibold text-white">12 лет</p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.25em] text-white/70">на рынке</p>
-                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <div className="mx-auto max-w-6xl space-y-20 px-6 py-20">
+        <div className="mx-auto max-w-6xl space-y-20 px-6 py-20 text-zinc-900">
           {sections.map((section) => (
             <section
               key={section.id}
               id={section.id}
-              className="scroll-mt-32 rounded-3xl border border-[#E5E7EB] bg-[#F8FAFC]/95 p-10 shadow-sm backdrop-blur"
+              className="scroll-mt-24 rounded-3xl border border-white/60 bg-white/90 p-10 shadow-lg shadow-zinc-900/5"
             >
               <span className="text-xs uppercase tracking-[0.35em] text-[#6B7280]">{section.title}</span>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#000433]">
@@ -152,11 +152,11 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="border-t border-[#E5E7EB] bg-[#F8FAFC]/95">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-6 py-10 text-center text-sm text-[#6B7280] md:flex-row md:justify-between">
-          <span className="font-medium text-[#000433]">Footer</span>
-          <p className="text-xs uppercase tracking-[0.3em] text-[#6B7280]">
-            © {new Date().getFullYear()} Индустриальные решения. Все права защищены.
+      <footer className="border-t border-white/10 bg-zinc-950/80">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-6 py-10 text-center text-xs uppercase tracking-[0.3em] text-white/40 md:flex-row md:justify-between">
+          <span className="font-medium text-white/70">Invest Urban Rent</span>
+          <p>
+            © {new Date().getFullYear()} Ваша компания. Все права защищены.
           </p>
         </div>
       </footer>
