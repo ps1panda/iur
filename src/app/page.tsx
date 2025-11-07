@@ -10,12 +10,6 @@ const navItems = [
   { id: "contacts", label: "Контакты" },
 ];
 
-const heroHighlights = [
-  "Инвестиционный девелопмент полного цикла",
-  "Управление объектами от 1 000 м²",
-  "Прогнозируемая доходность 12–18% годовых",
-];
-
 const processSteps = [
   {
     title: "Стратегия",
@@ -55,6 +49,31 @@ const ownerBenefits = [
     description:
       "Полностью берём на себя юридический, бухгалтерский и технический блок, освобождая собственника от рутины.",
   },
+  {
+    title: "Depot Point",
+    location: "Санкт-Петербург, Невский проспект",
+    area: "2 100 м²",
+    status: "Редевелопмент 2025",
+    image:
+      "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=1600&q=80",
+  },
+  {
+    title: "Atelier Offices",
+    location: "Екатеринбург, Вайнера",
+    area: "1 750 м²",
+    status: "Доходность 16,2%",
+    image:
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
+  },
+];
+
+const partners = [
+  "Сбер",
+  "ВТБ",
+  "Pioneer",
+  "MR Group",
+  "Samol",
+  "Sawatzky",
 ];
 
 const projects = [
@@ -96,7 +115,7 @@ const partners = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#040d1f] text-zinc-100">
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-transparent backdrop-blur-sm">
+      <header className="sticky top-0 z-50 bg-transparent backdrop-blur-sm">
         <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-6 py-5">
           <Image
             src="/group.svg"
@@ -137,35 +156,23 @@ export default function Home() {
             className="absolute inset-0 -z-10"
             style={{
               backgroundImage:
-                "linear-gradient(120deg, rgba(6, 16, 40, 0.45), rgba(5, 30, 68, 0.55)), url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=2000&q=80')",
+                "linear-gradient(120deg, rgba(6, 16, 40, 0.25), rgba(5, 30, 68, 0.35)), url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=2000&q=80')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           />
           <div className="absolute inset-x-0 bottom-0 -z-10 h-64 bg-gradient-to-t from-[#040d1f] via-[#040d1f]/60 to-transparent" />
-          <div className="relative mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-6 pb-28 pt-36 md:flex-row md:items-end md:justify-between">
+          <div className="relative mx-auto flex min-h-[70vh] w-full max-w-[1440px] flex-col gap-12 px-6 pb-24 pt-24 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl space-y-10">
-              <span className="inline-flex items-center rounded-full border border-white/30 px-6 py-2 text-xs uppercase tracking-[0.35em] text-white/80">
-                Устойчивые инвестиции в недвижимость
-              </span>
               <div className="space-y-6">
                 <h1 className="text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl lg:text-8xl">
-                  Invest Urban Rent
+                  <span className="block">Invest</span>
+                  <span className="block">Urban</span>
+                  <span className="block">Rent</span>
                 </h1>
                 <p className="text-xl font-medium text-white/90 md:text-2xl">
                   Мы создаём и управляем коммерческими пространствами, превращая их в стабильный источник пассивного дохода для инвесторов и собственников.
                 </p>
-                <ul className="grid gap-3 text-sm text-white/80 md:grid-cols-2">
-                  {heroHighlights.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-5 py-3"
-                    >
-                      <span className="inline-flex h-2 w-2 rounded-full bg-[#f8c545]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
               <div className="flex flex-wrap gap-4">
                 <a
