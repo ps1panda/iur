@@ -49,6 +49,31 @@ const ownerBenefits = [
     description:
       "Полностью берём на себя юридический, бухгалтерский и технический блок, освобождая собственника от рутины.",
   },
+  {
+    title: "Depot Point",
+    location: "Санкт-Петербург, Невский проспект",
+    area: "2 100 м²",
+    status: "Редевелопмент 2025",
+    image:
+      "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=1600&q=80",
+  },
+  {
+    title: "Atelier Offices",
+    location: "Екатеринбург, Вайнера",
+    area: "1 750 м²",
+    status: "Доходность 16,2%",
+    image:
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
+  },
+];
+
+const partners = [
+  "Сбер",
+  "ВТБ",
+  "Pioneer",
+  "MR Group",
+  "Samol",
+  "Sawatzky",
 ];
 
 const projects = [
