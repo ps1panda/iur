@@ -26,6 +26,9 @@ const processSteps = [
     description:
       "Берём на себя подбор подрядчиков, контроль сроков и качества строительства или редевелопмента.",
   },
+];
+
+const ownerBenefits = [
   {
     title: "Операция",
     description:
