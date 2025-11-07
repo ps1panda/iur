@@ -62,7 +62,7 @@ export function Contacts() {
           </label>
           <button
             type="submit"
-            className="mt-4 rounded-full bg-[#f8c545] px-8 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-zinc-950 transition-colors duration-200 hover:bg-[#ffd669]"
+            className="mt-4 rounded-full bg-[#f8c545] px-8 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-950 transition-colors duration-200 hover:bg-[#ffd669]"
           >
             Отправить заявку
           </button>

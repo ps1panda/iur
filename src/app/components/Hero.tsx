@@ -8,7 +8,7 @@ export function Hero() {
         className="absolute inset-0 -z-10"
         style={{
           backgroundImage:
-            "linear-gradient(120deg, rgba(4, 10, 24, 0.65), rgba(5, 24, 56, 0.8)), url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=2000&q=80')",
+            "linear-gradient(90deg, rgba(32, 58, 112, 0.6), rgba(7, 18, 42, 0.85)), url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=2000&q=80')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -17,7 +17,7 @@ export function Hero() {
       <div className="relative mx-auto flex min-h-[70vh] w-full max-w-[1440px] flex-col gap-12 px-6 pb-24 pt-24 md:flex-row md:items-end md:justify-between">
         <div className="max-w-2xl space-y-10">
           <div className="space-y-6">
-            <h1 className="text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl lg:text-8xl">
+            <h1 className="text-5xl font-bold leading-[0.9] tracking-tight text-white md:text-7xl lg:text-8xl">
               <span className="block">Invest</span>
               <span className="block">Urban</span>
               <span className="block">Rent</span>
@@ -29,13 +29,13 @@ export function Hero() {
           <div className="flex flex-wrap gap-4">
             <a
               href="#contacts"
-              className="rounded-full bg-[#f8c545] px-10 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-zinc-950 transition-colors duration-200 hover:bg-[#ffd669]"
+              className="rounded-full bg-[#f8c545] px-10 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-950 transition-colors duration-200 hover:bg-[#ffd669]"
             >
               Связаться
             </a>
             <a
               href="#projects"
-              className="rounded-full border border-white/50 px-10 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-white transition-colors duration-200 hover:border-white hover:bg-white/10"
+              className="rounded-full border border-white/50 px-10 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-200 hover:border-white hover:bg-white/10"
             >
               Объекты
             </a>

@@ -15,7 +15,7 @@ export function Header() {
           priority
         />
         <div className="hidden items-center gap-10 md:flex">
-          <nav className="flex items-center gap-6 text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
+          <nav className="flex items-center gap-6 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
             {navItems.map((item) => (
               <a
                 key={item.id}
@@ -28,7 +28,7 @@ export function Header() {
           </nav>
           <a
             href="#contacts"
-            className="rounded-full bg-[#f8c545] px-9 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-zinc-950 transition-colors duration-200 hover:bg-[#ffd669]"
+            className="rounded-full bg-[#f8c545] px-9 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-950 transition-colors duration-200 hover:bg-[#ffd669]"
           >
             Связаться
           </a>
