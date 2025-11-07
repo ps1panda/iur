@@ -5,16 +5,11 @@ import { projects } from "../data/content";
 export function Projects() {
   return (
     <section id="projects" className="mx-auto w-full max-w-[1440px] px-6 pb-24">
-      <div className="rounded-[40px] border border-white/10 bg-[#050b1d] p-10">
+      <div className="rounded-[40px] bg-[#050b1d] p-10">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <span className="text-xs uppercase tracking-[0.35em] text-white/60">
-              Объекты
-            </span>
-            <h2 className="mt-4 text-4xl font-semibold text-white">
-              Портфель реализованных проектов
-            </h2>
-          </div>
+          <h2 className="text-4xl font-semibold text-white">
+            Портфель реализованных проектов
+          </h2>
           <p className="max-w-xl text-base text-white/70">
             От креативных кластеров и гибких офисов до форматных retail-пространств — мы адаптируем концепцию под стратегию инвестора.
           </p>
@@ -23,7 +18,7 @@ export function Projects() {
           {projects.map((project) => (
             <article
               key={project.title}
-              className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5"
+              className="group overflow-hidden rounded-3xl bg-white/5"
             >
               <div className="relative h-60 overflow-hidden">
                 <Image

@@ -1,11 +1,8 @@
 export function About() {
   return (
     <section id="about" className="mx-auto w-full max-w-[1440px] px-6 py-24">
-      <div className="grid gap-12 rounded-[40px] border border-white/10 bg-white/5 p-10 backdrop-blur-sm lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="grid gap-12 rounded-[40px] bg-white/5 p-10 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="space-y-8">
-          <span className="text-xs uppercase tracking-[0.35em] text-white/60">
-            О компании
-          </span>
           <h2 className="text-4xl font-semibold text-white md:text-5xl">
             Управление коммерческой недвижимостью на языке инвестора
           </h2>
@@ -17,21 +14,21 @@ export function About() {
           </p>
         </div>
         <div className="grid gap-6 text-sm text-white/80">
-          <div className="rounded-3xl border border-white/15 bg-white/5 p-8">
-            <p className="text-xs uppercase tracking-[0.35em] text-white/60">Подход</p>
-            <p className="mt-4 text-lg font-semibold text-white">
+          <div className="rounded-3xl bg-white/10 p-8">
+            <h3 className="text-lg font-semibold text-white">Подход</h3>
+            <p className="mt-4 text-sm leading-relaxed text-white/75">
               Личный менеджер проекта и единая точка входа для инвесторов и арендаторов.
             </p>
           </div>
-          <div className="rounded-3xl border border-white/15 bg-white/5 p-8">
-            <p className="text-xs uppercase tracking-[0.35em] text-white/60">Экспертиза</p>
-            <p className="mt-4 text-lg font-semibold text-white">
+          <div className="rounded-3xl bg-white/10 p-8">
+            <h3 className="text-lg font-semibold text-white">Экспертиза</h3>
+            <p className="mt-4 text-sm leading-relaxed text-white/75">
               Более 15 лет в девелопменте, BOMA-стандарты управления и собственная аналитика рынка.
             </p>
           </div>
-          <div className="rounded-3xl border border-white/15 bg-white/5 p-8">
-            <p className="text-xs uppercase tracking-[0.35em] text-white/60">Команда</p>
-            <p className="mt-4 text-lg font-semibold text-white">
+          <div className="rounded-3xl bg-white/10 p-8">
+            <h3 className="text-lg font-semibold text-white">Команда</h3>
+            <p className="mt-4 text-sm leading-relaxed text-white/75">
               Архитекторы, инженеры, маркетологи и финансовые аналитики, объединённые общей целью.
             </p>
           </div>

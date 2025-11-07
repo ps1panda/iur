@@ -1,9 +1,6 @@
 export function Hero() {
   return (
-    <section
-      id="hero"
-      className="relative isolate overflow-hidden border-b border-white/10"
-    >
+    <section id="hero" className="relative isolate overflow-hidden">
       <div
         className="absolute inset-0 -z-10"
         style={{
@@ -41,7 +38,7 @@ export function Hero() {
             </a>
           </div>
         </div>
-        <div className="w-full max-w-sm rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-sm">
+        <div className="w-full max-w-sm rounded-3xl bg-white/10 p-8">
           <h2 className="text-lg font-semibold text-white">Ключевые показатели</h2>
           <dl className="mt-6 space-y-4 text-sm text-white/80">
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
