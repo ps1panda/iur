@@ -77,10 +77,22 @@ export const projects = [
 ] as const;
 
 export const partners = [
-  "Сбер",
-  "ВТБ",
-  "Pioneer",
-  "MR Group",
-  "Samol",
-  "Sawatzky",
+  "Аптеки Горздрав",
+  "Wildberries",
+  "OZON",
+  "Fix Price",
+  "Четыре Лапы",
+  "Пятёрочка",
+  "ВкусВилл",
+  "Invitro",
+  "Улыбка Радуги",
+  "Магнит Косметик",
+  "Планета Здоровья",
+  "Перекрёсток",
+  "Буханка пекарня",
+  "Додо Пицца",
+  "Билайн",
+  "МТС",
+  "Якитория",
+  "KFC",
 ] as const;

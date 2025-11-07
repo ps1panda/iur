@@ -36,3 +36,20 @@ h6 {
     BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 700;
 }
+
+@keyframes partners-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-partners-marquee {
+  animation: partners-marquee 28s linear infinite;
+}
+
+.animate-partners-marquee:hover {
+  animation-play-state: paused;
+}

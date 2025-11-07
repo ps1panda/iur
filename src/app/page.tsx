@@ -18,11 +18,11 @@ export default function Home(): JSX.Element {
       <Header />
       <main>
         <Hero />
+        <Partners />
         <About />
         <CustomBusiness />
         <Owners />
         <Projects />
-        <Partners />
         <Contacts />
       </main>
       <Footer />
