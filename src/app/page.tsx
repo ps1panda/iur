@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const sections = [
   {
     id: "about",
@@ -48,7 +50,14 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-b from-zinc-50 via-white to-zinc-100 text-zinc-900">
       <header className="sticky top-0 z-50 border-b border-white/60 bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          <span className="text-lg font-semibold tracking-tight text-zinc-900">Ваша компания</span>
+          <Image
+            src="/group.svg"
+            alt="Логотип Group"
+            width={160}
+            height={80}
+            className="h-10 w-auto"
+            priority
+          />
           <nav className="hidden gap-6 text-sm font-medium uppercase tracking-[0.2em] text-zinc-500 md:flex">
             {sections.map((section) => (
               <a
