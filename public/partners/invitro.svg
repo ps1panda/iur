@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="88" viewBox="0 0 220 88" role="img" aria-labelledby="title">
+  <title>Invitro</title>
+  <rect width="220" height="88" rx="18" fill="#0098b2"/>
+  <text
+    x="110"
+    y="54"
+    fill="#ffffff"
+    font-family="'Roboto', 'Montserrat', 'Arial', sans-serif"
+    font-size="32"
+    font-weight="700"
+    letter-spacing="2"
+    text-anchor="middle"
+  >INVITRO</text>
+</svg>

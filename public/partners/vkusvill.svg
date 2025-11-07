@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="88" viewBox="0 0 220 88" role="img" aria-labelledby="title">
+  <title>ВкусВилл</title>
+  <rect width="220" height="88" rx="18" fill="#6fb13b"/>
+  <text
+    x="110"
+    y="54"
+    fill="#133d16"
+    font-family="'Roboto', 'Montserrat', 'Arial', sans-serif"
+    font-size="30"
+    font-weight="700"
+    text-anchor="middle"
+  >ВкусВилл</text>
+</svg>

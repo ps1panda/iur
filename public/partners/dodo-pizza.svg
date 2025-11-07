@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="88" viewBox="0 0 220 88" role="img" aria-labelledby="title">
+  <title>Додо Пицца</title>
+  <rect width="220" height="88" rx="18" fill="#ff6b1a"/>
+  <text
+    x="110"
+    y="54"
+    fill="#1b1b1b"
+    font-family="'Roboto', 'Montserrat', 'Arial', sans-serif"
+    font-size="28"
+    font-weight="700"
+    text-anchor="middle"
+  >Додо Пицца</text>
+</svg>
