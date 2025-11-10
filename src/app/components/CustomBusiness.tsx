@@ -1,32 +1,64 @@
-import { processSteps } from "../data/content";
+'use client';
+
+import './CustomBusiness.css';
+import {
+  FaUserTimes,
+  FaTools,
+  FaMoneyBillWave,
+  FaBuilding,
+  FaBalanceScale,
+  FaDraftingCompass,
+  FaBolt,
+  FaChartLine,
+  FaFileContract,
+} from 'react-icons/fa';
 
 export function CustomBusiness() {
   return (
-    <section
-      id="custom-business"
-      className="mx-auto w-full max-w-[1440px] px-6 pb-24"
-    >
-      <div className="rounded-[40px] bg-[#050b1d] p-10">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <h2 className="text-4xl font-semibold text-white">
-            От концепции до первого арендатора
-          </h2>
-          <p className="max-w-xl text-base text-white/70">
-            Мы берём на себя полный цикл реализации объекта. Глубокая аналитика рынка и прозрачное планирование позволяют заранее понимать сроки окупаемости и прогноз по кэш-флоу.
-          </p>
-        </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {processSteps.map((step) => (
-            <div
-              key={step.title}
-              className="group rounded-3xl bg-white/10 p-8 transition-transform duration-200 hover:-translate-y-1"
-            >
-              <h3 className="text-lg font-semibold text-white">{step.title}</h3>
-              <p className="mt-4 text-sm leading-relaxed text-white/75 group-hover:text-white">
-                {step.description}
-              </p>
+    <section id="custom-business" className="custom-business-section">
+      <div className="custom-business-container">
+        <div className="custom-business-inner">
+          <h2 className="cb-title fade-in fade-delay-1">Бизнес на заказ</h2>
+
+          <div className="cb-intro fade-in fade-delay-2">
+            <h3 className="cb-subtitle">Готовый арендный бизнес</h3>
+            <p>
+              Купив готовый арендный бизнес, это не значит, что он будет успешно работать и приносить стабильный пассивный
+              доход, как Вам его позиционируют. Есть очень много подводных камней.
+            </p>
+          </div>
+
+          <div className="cb-grid">
+            {/* Левая колонка */}
+            <div className="cb-column fade-in fade-delay-3">
+              <p className="cb-heading">При покупке бизнеса Вы можете столкнуться с проблемами:</p>
+              <ul className="cb-list">
+                <li><FaUserTimes className="icon-yellow" />Арендатор попросил скидку или съезжает полностью.</li>
+                <li><FaTools className="icon-yellow" />Неисправности и износ инженерных систем, что в последующем потребует немалых финансовых затрат.</li>
+                <li><FaMoneyBillWave className="icon-yellow" />Скрытые платежи и налоги.</li>
+                <li><FaBuilding className="icon-yellow" />Съехал арендатор, и помещение окажется пустым. Из-за плохой истории и неудачной локации его невозможно будет сдать или продать по рыночной цене.</li>
+              </ul>
             </div>
-          ))}
+
+            {/* Правая колонка */}
+            <div className="cb-column fade-in fade-delay-4">
+              <p className="cb-heading">
+                Этапы формирования проекта от момента создания пространства до ввода в эксплуатацию:
+              </p>
+              <ul className="cb-list">
+                <li><FaBalanceScale className="icon-green" />Проводим аудит юридической части.</li>
+                <li><FaDraftingCompass className="icon-green" />Узакониваем перепланировки.</li>
+                <li><FaBolt className="icon-green" />Выделяем мощности.</li>
+                <li><FaChartLine className="icon-green" />Проводим анализ потенциала локации с высоким уровнем экспертизы, что позволяет заключать договоры аренды со стабильными и надёжными сетевыми арендаторами. И получать стабильный пассивный доход.</li>
+                <li className="cb-accent"><FaFileContract className="icon-yellow" /><span><strong>Уважаемые инвесторы,</strong> чтобы заказать услугу «Бизнес на заказ», Вам необходимо заключить с нашей компанией договор.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Кнопка */}
+          <div className="cb-button-wrap fade-in fade-delay-5">
+            <a href="#contact" className="cb-button">Связаться</a>
+          </div>
         </div>
       </div>
     </section>

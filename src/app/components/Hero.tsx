@@ -1,61 +1,108 @@
+"use client";
+
+import Image from "next/image";
+import "./Hero.css";
+// ❌ import "@/styles/reveal.css"; // больше не нужно — всё в globals.css
+import { useScrollReveal, useRevealGroup } from "@/hooks/useScrollReveal";
+
 export function Hero() {
+  // Индивидуальные элементы
+  const titleRef = useScrollReveal<HTMLHeadingElement>({ variant: "up", distance: 20, delay: 0 });
+  const textRef  = useScrollReveal<HTMLParagraphElement>({ variant: "up", distance: 14, delay: 80 });
+  const statsRef = useScrollReveal<HTMLDivElement>({ variant: "scale", delay: 160, duration: 700 });
+
+  // Группа со стаггером
+  const buttonsGroupRef = useRevealGroup<HTMLDivElement>({
+    variant: "up",
+    delayBase: 160,
+    step: 90,
+  });
+
   return (
-    <section id="hero" className="relative isolate overflow-hidden">
-      <div
-        className="absolute inset-0 -z-10"
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg, rgba(32, 58, 112, 0.6), rgba(7, 18, 42, 0.85)), url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=2000&q=80')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-64 bg-gradient-to-t from-[#040d1f] via-[#040d1f]/60 to-transparent" />
-      <div className="relative mx-auto flex min-h-[70vh] w-full max-w-[1440px] flex-col gap-12 px-6 pb-24 pt-24 md:flex-row md:items-end md:justify-between">
-        <div className="max-w-2xl space-y-10">
-          <div className="space-y-6">
-            <h1 className="text-5xl font-bold leading-[0.9] tracking-tight text-white md:text-7xl lg:text-8xl">
-              <span className="block">Invest</span>
-              <span className="block">Urban</span>
-              <span className="block">Rent</span>
+    <section id="hero" className="hero" aria-labelledby="hero-title">
+      <div className="hero__bg" aria-hidden="true">
+        <Image
+          src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=2400&q=80"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="hero__bg-img"
+        />
+      </div>
+
+      <div className="hero__overlay" aria-hidden="true" />
+
+      <div className="hero__container">
+        <div className="hero__content">
+          <div className="hero__textblock">
+            <h1
+              id="hero-title"
+              ref={titleRef}
+              className="hero__title reveal"
+              data-reveal="up"
+            >
+              <span>Invest</span>
+              <span>Urban</span>
+              <span>Rent</span>
             </h1>
-            <p className="text-xl font-medium text-white/90 md:text-2xl">
-              Мы создаём и управляем коммерческими пространствами, превращая их в стабильный источник пассивного дохода для инвесторов и собственников.
+
+            <p
+              ref={textRef}
+              className="hero__subtitle reveal"
+              data-reveal="up"
+            >
+              Мы создаём и управляем коммерческими пространствами, превращая их
+              в стабильный источник пассивного дохода для инвесторов и
+              собственников.
             </p>
           </div>
-          <div className="flex flex-wrap gap-4">
+
+          {/* Группа с авто-стаггером по детям */}
+          <div ref={buttonsGroupRef} className="hero__buttons" data-reveal>
             <a
               href="#contacts"
-              className="rounded-full bg-[#f8c545] px-10 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-950 transition-colors duration-200 hover:bg-[#ffd669]"
+              className="hero__btn hero__btn--primary"
+              data-reveal
+              aria-label="Связаться — перейти к форме контактов"
             >
               Связаться
             </a>
             <a
               href="#projects"
-              className="rounded-full border border-white/50 px-10 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-200 hover:border-white hover:bg-white/10"
+              className="hero__btn hero__btn--outline"
+              data-reveal
+              aria-label="Объекты — перейти к разделу с проектами"
             >
               Объекты
             </a>
           </div>
         </div>
-        <div className="w-full max-w-sm rounded-3xl bg-white/10 p-8">
-          <h2 className="text-lg font-semibold text-white">Ключевые показатели</h2>
-          <dl className="mt-6 space-y-4 text-sm text-white/80">
-            <div className="flex items-center justify-between border-b border-white/10 pb-4">
+
+        <div
+          ref={statsRef}
+          className="hero__stats"
+          data-reveal="scale"
+          style={{ ["--reveal-distance" as any]: "6px" }}
+        >
+          <h2 className="reveal" data-reveal="fade">Ключевые показатели</h2>
+          <dl>
+            <div className="reveal" data-reveal="up" data-delay="0">
               <dt>Управляемая площадь</dt>
-              <dd className="font-semibold text-white">12 600 м²</dd>
+              <dd>12&nbsp;600&nbsp;м²</dd>
             </div>
-            <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <div className="reveal" data-reveal="up" data-delay="60">
               <dt>Средняя ставка доходности</dt>
-              <dd className="font-semibold text-white">15,4% годовых</dd>
+              <dd>15,4%&nbsp;годовых</dd>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="reveal" data-reveal="up" data-delay="120">
               <dt>Партнёры и арендаторы</dt>
-              <dd className="font-semibold text-white">45+</dd>
+              <dd>45+</dd>
             </div>
           </dl>
-          <p className="mt-6 text-xs text-white/60">
-            Регулярные стратегические сессии и ежеквартальные отчёты помогают инвесторам контролировать результат на каждом этапе.
+          <p className="hero__note reveal" data-reveal="fade" data-delay="180">
+            Регулярные стратегические сессии и ежеквартальные отчёты помогают
+            инвесторам контролировать результат на каждом этапе.
           </p>
         </div>
       </div>

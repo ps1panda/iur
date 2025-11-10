@@ -1,55 +1,190 @@
 @import "tailwindcss";
 
+/* =========================
+   Базовые переменные бренда
+   ========================= */
 :root {
+  /* Брендовые цвета */
+  --color-primary: #001dff;      /* фирменный синий */
+  --color-primary-dark: #000d99; /* hover-синий */
+  --color-primary-deep: #000433; /* заголовки (почти чёрный) */
+  --color-contrast: #ffb800;
+  --color-text: #0a0e1a;
+  --color-subtle: #6b7280;
+  --color-border: #e5e7eb;       /* базовый нейтральный бордер */
+  --color-card: #f8fafc;
+
+  /* Фон и текстовые переменные (светлая тема по умолчанию) */
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Токены анимации (можно переопределять локально) */
+  --reveal-duration: 600ms;
+  --reveal-easing: cubic-bezier(.22,1,.36,1);
+  --reveal-delay: 0ms;
+  --reveal-distance: 16px;
+
+  /* Радиусы/тени по умолчанию */
+  --radius-lg: 16px;
+  --shadow-soft: 0 12px 40px rgba(0,0,0,.12);
 }
 
+/* =========================
+   Tailwind inline theme tokens
+   ========================= */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-roboto);
   --font-heading: var(--font-heading);
+
+  /* Проброс брендовых переменных в tailwind-токены */
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-deep: var(--color-primary-deep);
+  --color-contrast: var(--color-contrast);
+  --color-text: var(--color-text);
+  --color-subtle: var(--color-subtle);
+  --color-border: var(--color-border);
+  --color-card: var(--color-card);
 }
 
+/* =========================
+   Тёмная тема (авто по системе)
+   ========================= */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --color-border: #1f2937;
+    --color-card: #0f172a;
   }
 }
+
+/* =========================
+   Базовые глобальные стили
+   ========================= */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-roboto), "Roboto", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  font-family: var(--font-roboto), "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading), "Montserrat", "Roboto", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
+img, svg, video, canvas { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--color-contrast) 60%, transparent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-primary) 20%, transparent);
+}
+
+/* Заголовки */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), "Montserrat", "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 700;
+  color: var(--color-primary-deep);
 }
 
+/* =========================
+   Анимация блока партнёров
+   ========================= */
+
+/* Базовый бесшовный бегунок (лента > 2х ширин) */
 @keyframes partners-marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
+/* Медленная плавная прокрутка; используйте на контейнере ленты */
 .animate-partners-marquee {
-  animation: partners-marquee 28s linear infinite;
+  animation: partners-marquee 90s linear infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 20px; /* расстояние между логотипами */
+  will-change: transform;
 }
 
+/* Пауза при наведении */
 .animate-partners-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Поддержка reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-partners-marquee { animation: none; transform: none; }
+}
+
+/* =========================
+   Reveal (постепенное появление)
+   ========================= */
+
+/* Базовое состояние */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+  filter: none;
+  transition-property: opacity, transform, filter;
+  transition-duration: var(--reveal-duration, 600ms);
+  transition-timing-function: var(--reveal-easing, cubic-bezier(.22,1,.36,1));
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+/* Показ (класс добавляет хук) */
+.reveal-visible,
+.reveal.is-inview {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Варианты движения (по data-reveal="...") */
+.reveal[data-reveal="up"]    { transform: translate3d(0, var(--reveal-distance, 16px), 0); }
+.reveal[data-reveal="down"]  { transform: translate3d(0, calc(var(--reveal-distance, 16px) * -1), 0); }
+.reveal[data-reveal="left"]  { transform: translate3d(var(--reveal-distance, 16px), 0, 0); }
+.reveal[data-reveal="right"] { transform: translate3d(calc(var(--reveal-distance, 16px) * -1), 0, 0); }
+.reveal[data-reveal="scale"] { transform: scale(.96); transform-origin: center; }
+.reveal[data-reveal="fade"]  { /* только прозрачность */ }
+.reveal[data-reveal="blur"]  { filter: blur(8px); }
+
+/* Если delay задан инлайном через CSS-переменную — гарантируем его применение (совместимость с Safari) */
+.reveal[style*="--reveal-delay"] {
+  transition-delay: var(--reveal-delay);
+}
+
+/* Стаггер по nth-child (если нет JS-хука; можно переопределять переменной) */
+.reveal[data-stagger] { transition-delay: calc(var(--reveal-delay, 0ms) + (var(--stagger-step, 90ms) * (var(--i, 0)))); }
+.reveal[data-i="0"] { --i: 0; }
+.reveal[data-i="1"] { --i: 1; }
+.reveal[data-i="2"] { --i: 2; }
+.reveal[data-i="3"] { --i: 3; }
+.reveal[data-i="4"] { --i: 4; }
+.reveal[data-i="5"] { --i: 5; }
+
+/* Поддержка reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-visible,
+  .reveal.is-inview {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
 }

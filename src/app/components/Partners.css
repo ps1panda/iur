@@ -1,0 +1,142 @@
+/* ===== Основная структура ===== */
+.partners-section {
+  background: #fff;
+}
+
+.partners-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.partners-block {
+  background: #fff;
+  padding: 40px 0;
+  overflow: hidden;
+}
+
+.partners-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.partners-title {
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 600;
+  color: #0c1f44;
+  margin: 0 0 8px;
+}
+
+/* ===== Лента партнёров ===== */
+.partners-marquee-wrap {
+  position: relative;
+  margin-top: 16px;
+  /* мягкие края */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+}
+
+.partners-marquee {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 8px 8px 0;
+  min-width: max-content;
+  animation: partners-marquee 90s linear infinite;
+}
+
+.partners-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ===== Единая плитка под логотип ===== */
+.partner-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 96px;
+  min-width: 200px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(10, 14, 26, 0.06) inset;
+}
+
+/* ===== Логотип с мягким синим фильтром ===== */
+.partner-logo {
+  display: block;
+  max-height: 56px;
+  max-width: 160px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+
+  /* серый с лёгким синим тоном */
+  filter: grayscale(100%)
+          brightness(0.9)
+          contrast(1.05)
+          sepia(12%)
+          saturate(150%)
+          hue-rotate(205deg)
+          opacity(0.85);
+  transition: filter 250ms ease, transform 250ms ease;
+  transform: translateZ(0);
+}
+
+/* эффект при наведении — чуть ярче */
+.partner-tile:hover .partner-logo {
+  filter: grayscale(0%)
+          brightness(1)
+          contrast(1.05)
+          opacity(1);
+  transform: scale(1.02);
+}
+
+/* ===== Анимация ===== */
+@keyframes partners-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ===== Prefers-reduced-motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .partners-marquee { animation: none; }
+}
+
+/* ===== Тёмная тема ===== */
+@media (prefers-color-scheme: dark) {
+  .partners-block { background: #0a0a0a; }
+  .partner-tile {
+    background: #111;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  }
+  .partner-logo {
+    filter: grayscale(100%)
+            brightness(1.1)
+            contrast(1.1)
+            sepia(15%)
+            saturate(140%)
+            hue-rotate(205deg)
+            opacity(0.9);
+  }
+  .partner-tile:hover .partner-logo {
+    filter: grayscale(0%)
+            brightness(1.15)
+            contrast(1.1)
+            sepia(10%)
+            saturate(130%)
+            hue-rotate(205deg)
+            opacity(1);
+  }
+}
+
+/* ===== Мобильные правки ===== */
+@media (max-width: 640px) {
+  .partners-title { font-size: 28px; }
+  .partner-tile { height: 80px; min-width: 160px; padding: 6px 12px; }
+  .partner-logo { max-height: 44px; max-width: 120px; }
+}
