@@ -1,104 +1,110 @@
 'use client';
 
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useRevealGroup, useScrollReveal } from '@/hooks/useScrollReveal';
+import './Contacts.css';
 
 export function Contacts() {
-  const titleRef = useScrollReveal<HTMLHeadingElement>({ variant: 'up', distance: 20 });
-  const lineRef = useScrollReveal<HTMLDivElement>({ variant: 'fade', delay: 120, duration: 600 });
-  const contentRef = useScrollReveal<HTMLDivElement>({ variant: 'up', distance: 30, delay: 200 });
+  const cardRef = useScrollReveal<HTMLDivElement>({
+    variant: 'up',
+    distance: 28,
+    delay: 140,
+  });
+  const titleRef = useScrollReveal<HTMLHeadingElement>({
+    variant: 'up',
+    distance: 20,
+    delay: 0,
+  });
+  const lineRef = useScrollReveal<HTMLDivElement>({
+    variant: 'fade',
+    delay: 120,
+    duration: 600,
+  });
+  const leadRef = useScrollReveal<HTMLParagraphElement>({
+    variant: 'up',
+    distance: 16,
+    delay: 220,
+  });
+  const infoGroupRef = useRevealGroup<HTMLDivElement>({
+    variant: 'up',
+    distance: 12,
+    delayBase: 320,
+    step: 120,
+  });
+  const formGroupRef = useRevealGroup<HTMLFormElement>({
+    variant: 'up',
+    distance: 14,
+    delayBase: 360,
+    step: 100,
+    scopeSelector: ':scope > [data-reveal]',
+  });
 
   return (
-    <section id="contacts" className="mx-auto w-full max-w-[1440px] px-6 pb-28 text-white">
-      <div
-        ref={contentRef}
-        className="grid gap-10 rounded-[40px] bg-[#050b1d] p-10 md:grid-cols-[1.2fr_0.8fr] reveal"
-      >
-        {/* Левая часть */}
-        <div className="space-y-8 text-white">
-          <div ref={titleRef} className="reveal">
-            <h2 className="text-4xl font-semibold text-white">
+    <section id="contacts" className="contacts-section">
+      <div ref={cardRef} className="contacts-card reveal" data-reveal="up">
+        <div className="contacts-card__inner">
+          <div className="contacts-info">
+          <div className="contacts-heading">
+            <h2 ref={titleRef} className="section-heading reveal" data-reveal="up">
               Свяжитесь, чтобы обсудить потенциал вашего объекта
             </h2>
-            <div
-              ref={lineRef}
-              className="mt-3 h-[3px] w-24 rounded-full bg-[#f8c545] reveal"
-            />
+            <div ref={lineRef} className="section-line reveal" data-reveal="fade" aria-hidden="true" />
           </div>
 
-          <p className="text-base text-white">
-            Расскажите нам о задаче, и мы подготовим экспресс-анализ с вариантами сценариев.
-            Менеджер ответит в течение рабочего дня.
+          <p ref={leadRef} className="contacts-lead section-lead reveal" data-reveal="up">
+            Расскажите нам о задаче, и мы подготовим экспресс-анализ с вариантами сценариев. Менеджер ответит в течение рабочего
+            дня.
           </p>
 
-          {/* Контакты вертикально */}
-          <div className="space-y-6 text-white">
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-white/80">Телефон</h3>
-              <a
-                href="tel:+74950000000"
-                className="mt-2 block text-lg font-semibold text-white hover:text-[#f8c545] transition-colors"
-              >
+          <div ref={infoGroupRef} className="contacts-list" data-reveal>
+            <div className="contacts-list__item" data-reveal>
+              <h3 className="contacts-list__title">Телефон</h3>
+              <a className="contacts-list__link" href="tel:+74950000000" data-reveal>
                 +7 (495) 000-00-00
               </a>
             </div>
-
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-white/80">Почта</h3>
-              <a
-                href="mailto:contact@iur.ru"
-                className="mt-2 block text-lg font-semibold text-white hover:text-[#f8c545] transition-colors"
-              >
+            <div className="contacts-list__item" data-reveal>
+              <h3 className="contacts-list__title">Почта</h3>
+              <a className="contacts-list__link" href="mailto:contact@iur.ru" data-reveal>
                 contact@iur.ru
               </a>
             </div>
-
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-white/80">Офис</h3>
-              <p className="mt-2 text-sm text-white">
+            <div className="contacts-list__item" data-reveal>
+              <h3 className="contacts-list__title">Офис</h3>
+              <p className="contacts-list__text" data-reveal>
                 Москва, БЦ «Прага», 2-й Красногвардейский проезд, 7 стр. 1
               </p>
             </div>
           </div>
         </div>
 
-        {/* Форма */}
-        <form className="flex flex-col gap-4 rounded-3xl bg-white/5 p-8 text-white">
-          <h3 className="text-lg font-semibold text-white">Запросить консультацию</h3>
-          <label className="text-sm font-medium text-white">
-            Имя
-            <input
-              type="text"
-              placeholder="Как к вам обращаться"
-              className="mt-2 w-full rounded-2xl border border-white/20 bg-[#040a1c] px-4 py-3 text-sm text-white placeholder:text-white/60 focus:border-[#f8c545] focus:outline-none"
-            />
-          </label>
-          <label className="text-sm font-medium text-white">
-            Телефон или e-mail
-            <input
-              type="text"
-              placeholder="+7 (___) ___-__-__"
-              className="mt-2 w-full rounded-2xl border border-white/20 bg-[#040a1c] px-4 py-3 text-sm text-white placeholder:text-white/60 focus:border-[#f8c545] focus:outline-none"
-            />
-          </label>
-          <label className="text-sm font-medium text-white">
-            Кратко о задаче
-            <textarea
-              placeholder="Например: нужен редевелопмент бизнес-центра на 4 000 м²"
-              rows={4}
-              className="mt-2 w-full rounded-2xl border border-white/20 bg-[#040a1c] px-4 py-3 text-sm text-white placeholder:text-white/60 focus:border-[#f8c545] focus:outline-none"
-            />
-          </label>
-          <button
-            type="submit"
-            className="mt-4 rounded-full bg-[#f8c545] px-8 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-950 transition-colors duration-200 hover:bg-[#ffd669]"
-          >
-            Отправить заявку
-          </button>
-          <p className="text-[11px] leading-relaxed text-white">
-            Нажимая кнопку, вы соглашаетесь на обработку персональных данных и получение
-            информационных материалов от Invest Urban Rent.
-          </p>
-        </form>
+          <form ref={formGroupRef} className="contacts-form" data-reveal>
+            <h3 className="contacts-form__title" data-reveal>
+              Запросить консультацию
+            </h3>
+            <label className="contacts-form__field" data-reveal>
+              <span>Имя</span>
+              <input type="text" placeholder="Как к вам обращаться" />
+            </label>
+            <label className="contacts-form__field" data-reveal>
+              <span>Телефон или e-mail</span>
+              <input type="text" placeholder="+7 (___) ___-__-__" />
+            </label>
+            <label className="contacts-form__field" data-reveal>
+              <span>Кратко о задаче</span>
+              <textarea
+                placeholder="Например: нужен редевелопмент бизнес-центра на 4 000 м²"
+                rows={4}
+              />
+            </label>
+            <button className="contacts-form__submit" data-reveal type="submit">
+              Отправить заявку
+            </button>
+            <p className="contacts-form__note" data-reveal>
+              Нажимая кнопку, вы соглашаетесь на обработку персональных данных и получение информационных материалов от Invest
+              Urban Rent.
+            </p>
+          </form>
+        </div>
       </div>
     </section>
   );
