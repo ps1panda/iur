@@ -157,11 +157,19 @@
   color: rgba(238, 242, 255, 0.85);
 }
 
+.owners-icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  display: block;
+}
+
 .owners-list .icon-contrast,
 .owners-list .icon-accent {
   margin-top: 2px;
-  font-size: 18px;
-  flex: 0 0 28px;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
 }
 
 /* Акценты (иконки) */
