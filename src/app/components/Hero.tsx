@@ -2,21 +2,34 @@
 
 import Image from "next/image";
 import "./Hero.css";
-// ❌ import "@/styles/reveal.css"; // больше не нужно — всё в globals.css
 import { useScrollReveal, useRevealGroup } from "@/hooks/useScrollReveal";
 
 export function Hero() {
-  // Индивидуальные элементы
+  // Заголовок и подзаголовок
   const titleRef = useScrollReveal<HTMLHeadingElement>({ variant: "up", distance: 20, delay: 0 });
   const textRef  = useScrollReveal<HTMLParagraphElement>({ variant: "up", distance: 14, delay: 80 });
-  const statsRef = useScrollReveal<HTMLDivElement>({ variant: "scale", delay: 160, duration: 700 });
 
-  // Группа со стаггером
+  // Кнопки: стаггер по детям
   const buttonsGroupRef = useRevealGroup<HTMLDivElement>({
     variant: "up",
     delayBase: 160,
     step: 90,
   });
+
+  // Карточка статистики: scale контейнера + стаггер внутренних элементов
+  const statsCardRef  = useScrollReveal<HTMLDivElement>({ variant: "scale", delay: 120, duration: 700 });
+  const statsGroupRef = useRevealGroup<HTMLDivElement>({
+    selector: ".reveal, [data-reveal]",
+    variant: "up",
+    delayBase: 0,
+    step: 60,
+  });
+
+  // Комбинируем два refs на один элемент
+  const mergeStatsRef = (el: HTMLDivElement | null) => {
+    (statsCardRef as any).current = el;
+    (statsGroupRef as any).current = el;
+  };
 
   return (
     <section id="hero" className="hero" aria-labelledby="hero-title">
@@ -58,7 +71,7 @@ export function Hero() {
             </p>
           </div>
 
-          {/* Группа с авто-стаггером по детям */}
+          {/* Кнопки со стаггером */}
           <div ref={buttonsGroupRef} className="hero__buttons" data-reveal>
             <a
               href="#contacts"
@@ -79,9 +92,10 @@ export function Hero() {
           </div>
         </div>
 
+        {/* Статистика: scale + стаггер */}
         <div
-          ref={statsRef}
-          className="hero__stats"
+          ref={mergeStatsRef}
+          className="hero__stats reveal"
           data-reveal="scale"
           style={{ ["--reveal-distance" as any]: "6px" }}
         >

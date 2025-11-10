@@ -1,0 +1,205 @@
+/* ====== Общая структура ====== */
+.owners-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-primary-deep); /* тёмно-синий фон */
+  color: #ffffff; /* белый текст */
+  padding: 6rem 0;
+}
+
+/* ====== Фон ====== */
+.owners-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.owners-bg-image {
+  object-fit: contain;
+  object-position: right bottom;
+  opacity: 0.22;
+  filter: brightness(0.9) saturate(0.9);
+  -webkit-mask-image: linear-gradient(
+    to left,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.9) 12%,
+    rgba(0,0,0,0.55) 32%,
+    rgba(0,0,0,0.25) 52%,
+    rgba(0,0,0,0.08) 66%,
+    rgba(0,0,0,0) 84%
+  );
+          mask-image: linear-gradient(
+    to left,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.9) 12%,
+    rgba(0,0,0,0.55) 32%,
+    rgba(0,0,0,0.25) 52%,
+    rgba(0,0,0,0.08) 66%,
+    rgba(0,0,0,0) 84%
+  );
+}
+
+.owners-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(80% 70% at 15% 30%, rgba(255,255,255,0.08), transparent 60%),
+              linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0));
+  pointer-events: none;
+}
+
+/* ====== Контейнер ====== */
+.owners-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.owners-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 32px;
+}
+
+/* ====== Заголовок и вступление ====== */
+.owners-heading-intro {
+  display: grid;
+  gap: 16px;
+}
+
+.owners-heading-block {
+  display: grid;
+  gap: 12px;
+  align-items: center;
+}
+
+.owners-title {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #ffffff; /* белый заголовок */
+}
+
+.owners-line {
+  width: 88px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-contrast); /* фирменный акцент */
+}
+
+.owners-intro {
+  max-width: 820px;
+  color: #e8ecff;
+}
+
+.owners-subtitle {
+  margin: 0 0 8px 0;
+  font-size: clamp(18px, 2.2vw, 24px);
+  color: #ffffff;
+}
+
+/* ====== Сетка колонок ====== */
+.owners-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (min-width: 960px) {
+  .owners-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+.owners-column {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(6px);
+}
+
+.owners-heading {
+  margin: 0 0 12px 0;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* ====== Списки ====== */
+.owners-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.owners-list li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: start;
+  gap: 12px;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: #eef2ff;
+}
+
+.owners-list .icon-contrast,
+.owners-list .icon-accent {
+  margin-top: 2px;
+  font-size: 18px;
+  flex: 0 0 28px;
+}
+
+/* Акценты (иконки) */
+.icon-contrast { color: var(--color-contrast); } /* жёлтый */
+.icon-accent   { color: #8fb1ff; }               /* мягкий голубой акцент на синем фоне */
+
+.owners-accent {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+/* ====== Кнопка ====== */
+.owners-button-wrap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.owners-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 12px;
+  background: var(--color-contrast);
+  color: #0b1426;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 220ms var(--reveal-easing, cubic-bezier(.22,1,.36,1)), 
+              box-shadow 220ms var(--reveal-easing, cubic-bezier(.22,1,.36,1));
+  box-shadow: 0 6px 18px rgba(255, 184, 0, 0.18);
+}
+
+.owners-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(255, 184, 0, 0.26);
+}
+
+/* ====== Мягкие входные анимации (совместимо с твоими reveal) ====== */
+.fade-in { opacity: 0; transform: translateY(12px); animation: ownersFadeIn 0.7s ease forwards; }
+.fade-delay-2 { animation-delay: 0.12s; }
+.fade-delay-3 { animation-delay: 0.2s; }
+.fade-delay-4 { animation-delay: 0.28s; }
+.fade-delay-5 { animation-delay: 0.36s; }
+
+@keyframes ownersFadeIn {
+  to { opacity: 1; transform: none; }
+}

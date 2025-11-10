@@ -1,16 +1,5 @@
-import type { JSX } from "react";
-
-import {
-  About,
-  Contacts,
-  CustomBusiness,
-  Footer,
-  Header,
-  Hero,
-  Owners,
-  Partners,
-  Projects,
-} from "./sections";
+import type { JSX } from 'react';
+import { About, Contacts, CustomBusiness, Footer, Header, Hero, Owners, Partners, Projects, ForOwners } from './sections';
 
 export default function Home(): JSX.Element {
   return (
@@ -21,7 +10,7 @@ export default function Home(): JSX.Element {
         <Partners />
         <About />
         <CustomBusiness />
-        <Owners />
+        <ForOwners />
         <Projects />
         <Contacts />
       </main>

@@ -1,0 +1,171 @@
+/* ====== Общая структура ====== */
+.projects-section {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  color: #0c1f44;
+  padding: 6rem 0;
+}
+
+.projects-container {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ====== Заголовок ====== */
+.projects-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 900px;
+  margin-bottom: 3rem;
+}
+
+.projects-title {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0c1f44;
+  margin-bottom: 1rem;
+}
+
+.projects-line {
+  height: 3px;
+  width: 0;
+  max-width: 9rem;
+  border-radius: 9999px;
+  background-color: #ffb800;
+  box-shadow: 0 0 12px #ffb800;
+  transform-origin: left center;
+  transition: width 0.85s cubic-bezier(.22, .61, .36, 1);
+  opacity: 0.95;
+  margin-bottom: 1.25rem;
+}
+
+.projects-line.reveal-visible {
+  width: 9rem;
+  animation: cbLineGlow 2.2s ease 0.85s 1 forwards;
+}
+
+@keyframes cbLineGlow {
+  0%   { box-shadow: 0 0 12px #ffb800; }
+  60%  { box-shadow: 0 0 20px #ffcc3a; }
+  100% { box-shadow: 0 0 12px #ffb800; }
+}
+
+.projects-subtext {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: rgba(12, 31, 68, 0.9);
+  max-width: 720px;
+}
+
+/* ====== Сетка ====== */
+.projects-grid {
+  display: grid;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ====== Карточка ====== */
+.project-card {
+  overflow: hidden;
+  background: #f8fafc;
+  border-radius: 24px;
+  box-shadow: 0 8px 22px rgba(12, 31, 68, 0.08);
+  transition: box-shadow 0.25s ease, opacity 0.6s ease;
+  opacity: 0; /* для плавного появления */
+}
+
+.project-card.reveal-visible {
+  opacity: 1;
+}
+
+/* При наведении — без движения, только мягкое усиление тени */
+.project-card:hover {
+  box-shadow: 0 10px 28px rgba(12, 31, 68, 0.15);
+}
+
+.project-image-wrapper {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(12, 31, 68, 0.08);
+}
+
+.project-image {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+/* Небольшое приближение картинки при hover */
+.project-card:hover .project-image {
+  transform: scale(1.03);
+}
+
+.project-meta {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background: linear-gradient(to top, rgba(255,255,255,0.9), rgba(255,255,255,0));
+  color: #0c1f44;
+  font-weight: 600;
+}
+
+/* ====== Контент карточки ====== */
+.project-content {
+  padding: 1.75rem;
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0c1f44;
+  margin-bottom: 0.5rem;
+}
+
+.project-location {
+  font-size: 0.95rem;
+  color: rgba(12, 31, 68, 0.75);
+}
+
+/* ====== Появление (fade only) ====== */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+}
+
+/* ====== Accessibility ====== */
+@media (prefers-reduced-motion: reduce) {
+  .projects-line,
+  .projects-line.reveal-visible {
+    transition: none;
+    animation: none;
+    width: 9rem;
+  }
+  .reveal,
+  .reveal-visible {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
