@@ -1,20 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useRevealGroup, useScrollReveal } from '@/hooks/useScrollReveal';
+import { InlineIcon } from './icons';
 import './ForOwners.css';
-import {
-  FaHandshake,
-  FaFileContract,
-  FaHistory,
-  FaClipboardCheck,
-  FaTools,
-  FaBolt,
-  FaBalanceScale,
-  FaMoneyBillWave,
-  FaBuilding,
-  FaShieldAlt,
-} from 'react-icons/fa';
 
 export function ForOwners() {
   // Анимации как в CustomBusiness
@@ -28,6 +17,41 @@ export function ForOwners() {
     variant: 'fade',
     delay: 120,
     duration: 600,
+  });
+
+  const introGroupRef = useRevealGroup<HTMLDivElement>({
+    variant: 'up',
+    distance: 14,
+    delayBase: 200,
+    step: 100,
+  });
+
+  const gridGroupRef = useRevealGroup<HTMLDivElement>({
+    variant: 'up',
+    distance: 22,
+    delayBase: 320,
+    step: 140,
+  });
+
+  const conditionsListRef = useRevealGroup<HTMLUListElement>({
+    variant: 'up',
+    distance: 12,
+    delayBase: 0,
+    step: 90,
+  });
+
+  const benefitsListRef = useRevealGroup<HTMLDivElement>({
+    variant: 'up',
+    distance: 12,
+    delayBase: 0,
+    step: 110,
+    scopeSelector: ':scope > [data-reveal]',
+  });
+
+  const ctaRef = useScrollReveal<HTMLAnchorElement>({
+    variant: 'up',
+    distance: 16,
+    delay: 520,
   });
 
   return (
@@ -50,50 +74,79 @@ export function ForOwners() {
           {/* Левый блок: Заголовок + линия + вступление */}
           <div className="owners-heading-intro">
             <div className="owners-heading-block">
-              <h2 ref={titleRef} className="owners-title reveal" data-reveal="up">
+              <h2 ref={titleRef} className="owners-title section-heading reveal" data-reveal="up">
                 Собственникам
               </h2>
               <div
                 ref={lineRef}
-                className="owners-line reveal"
+                className="owners-line section-line reveal"
                 data-reveal="fade"
                 aria-hidden="true"
               />
             </div>
 
-            <div className="owners-intro fade-in fade-delay-2">
-              <h3 className="owners-subtitle">Наша компания возьмет на продажу Ваш бизнес</h3>
-              <p>
+            <div ref={introGroupRef} className="owners-intro" data-reveal>
+              <h3 className="owners-subtitle" data-reveal>
+                Наша компания возьмет на продажу Ваш бизнес
+              </h3>
+              <p data-reveal>
                 Возьмем в аренду помещения, торговую коммерческую недвижимость для собственных проектов
               </p>
             </div>
           </div>
 
           {/* Основная сетка */}
-          <div className="owners-grid">
+          <div ref={gridGroupRef} className="owners-grid" data-reveal>
             {/* Левая колонка — условия реализации проекта */}
-            <div className="owners-column fade-in fade-delay-3">
+            <div className="owners-column" data-reveal>
               <p className="owners-heading">Условия реализации Вашего проекта:</p>
-              <ul className="owners-list">
-                <li><FaHistory className="icon-contrast" />История арендных платежей — оцениваем надежность арендатора.</li>
-                <li><FaFileContract className="icon-contrast" />Оценка Договора аренды — разбираем обязательства и риски.</li>
-                <li><FaTools className="icon-contrast" />Техническое состояние объекта, красные линии и инженерные коммуникации — выявляем недостатки и планируем их устранение.</li>
+              <ul ref={conditionsListRef} className="owners-list" data-reveal>
+                <li data-reveal>
+                  <InlineIcon
+                    name="ownersHistory"
+                    baseClassName="owners-icon"
+                    className="icon-contrast"
+                  />
+                  История арендных платежей — оцениваем надежность арендатора.
+                </li>
+                <li data-reveal>
+                  <InlineIcon
+                    name="ownersFileContract"
+                    baseClassName="owners-icon"
+                    className="icon-contrast"
+                  />
+                  Оценка Договора аренды — разбираем обязательства и риски.
+                </li>
+                <li data-reveal>
+                  <InlineIcon
+                    name="ownersTools"
+                    baseClassName="owners-icon"
+                    className="icon-contrast"
+                  />
+                  Техническое состояние объекта, красные линии и инженерные коммуникации — выявляем недостатки и планируем их устранение.
+                </li>
               </ul>
             </div>
 
             {/* Правая колонка — что получит собственник */}
-            <div className="owners-column fade-in fade-delay-4">
+            <div className="owners-column" data-reveal>
               <p className="owners-heading">Стабильный пассивный доход</p>
-              <ul className="owners-list">
-                <p>На сегодняшний день мы реализуем полный цикл работ по проектам в сфере арендного бизнеса: мы выполняем все работы своими силами и за свой счет.</p>
-                <p>Можете сдать нашей компании в аренду нежилое помещение, коммерческую недвижимость и получать долгосрочный стабильный пассивный доход, а все остальные заботы мы возьмем на себя.</p>
-              </ul>
+              <div ref={benefitsListRef} className="owners-list owners-list--text" data-reveal>
+                <p data-reveal>
+                  На сегодняшний день мы реализуем полный цикл работ по проектам в сфере арендного бизнеса: мы выполняем все работы своими силами и за свой счет.
+                </p>
+                <p data-reveal>
+                  Можете сдать нашей компании в аренду нежилое помещение, коммерческую недвижимость и получать долгосрочный стабильный пассивный доход, а все остальные заботы мы возьмем на себя.
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Кнопка */}
-          <div className="owners-button-wrap fade-in fade-delay-5">
-            <a href="#contact" className="owners-button">Связаться</a>
+          <div className="owners-button-wrap">
+            <a ref={ctaRef} href="#contacts" className="owners-button reveal" data-reveal="up">
+              Связаться
+            </a>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import "./Hero.css";
 import { useScrollReveal, useRevealGroup } from "@/hooks/useScrollReveal";
@@ -30,16 +31,14 @@ export function Hero() {
     delay: 120,
     duration: 700,
   });
-  const statsGroupRef = useRevealGroup<HTMLDivElement>({
+  const statsGroupRef = useRevealGroup<HTMLDListElement>({
     variant: "up",
     delayBase: 0,
     step: 60,
   });
 
-  // Комбинируем два refs на один элемент
-  const mergeStatsRef = (el: HTMLDivElement | null) => {
-    (statsCardRef as any).current = el;
-    (statsGroupRef as any).current = el;
+  const statsRevealStyle: CSSProperties & { "--reveal-distance"?: string } = {
+    "--reveal-distance": "6px",
   };
 
   return (
@@ -101,15 +100,15 @@ export function Hero() {
 
         {/* Статистика: scale + стаггер */}
         <div
-          ref={mergeStatsRef}
+          ref={statsCardRef}
           className="hero__stats reveal"
           data-reveal="scale"
-          style={{ ["--reveal-distance" as any]: "6px" }}
+          style={statsRevealStyle}
         >
           <h2 className="reveal" data-reveal="fade">
             Ключевые показатели
           </h2>
-          <dl>
+          <dl ref={statsGroupRef} data-reveal>
             <div className="reveal" data-reveal="up" data-delay="0">
               <dt>Управляемая площадь</dt>
               <dd>12&nbsp;600&nbsp;м²</dd>

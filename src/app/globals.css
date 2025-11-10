@@ -1,12 +1,12 @@
 /* globals.css */
 
-/* ===== Tailwind must be first ===== */
-@import "tailwindcss";
-
 /* =========================
    Базовые переменные бренда
    ========================= */
 :root {
+  --font-roboto: "Roboto";
+  --font-heading: "Montserrat";
+
   /* Брендовые цвета */
   --color-primary: #001dff;      /* фирменный синий */
   --color-primary-dark: #000d99; /* hover-синий */
@@ -35,25 +35,6 @@
   --reveal-easing: cubic-bezier(.22,1,.36,1);
   --reveal-delay: 0ms;
   --reveal-distance: 16px;
-}
-
-/* =========================
-   Tailwind inline theme tokens
-   ========================= */
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-roboto);
-  --font-heading: var(--font-heading);
-
-  --color-primary: var(--color-primary);
-  --color-primary-dark: var(--color-primary-dark);
-  --color-primary-deep: var(--color-primary-deep);
-  --color-contrast: var(--color-contrast);
-  --color-text: var(--color-text);
-  --color-subtle: var(--color-subtle);
-  --color-border: var(--color-border);
-  --color-card: var(--color-card);
 }
 
 /* =========================
@@ -92,6 +73,69 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+.page-shell {
+  min-height: 100vh;
+  background: #040d1f;
+  color: rgba(236, 240, 255, 0.96);
+  display: flex;
+  flex-direction: column;
+}
+
+.page-main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-spacer {
+  height: 72px;
+}
+
+@media (min-width: 768px) {
+  .header-spacer {
+    height: 84px;
+  }
+}
+
+.section-heading {
+  font-size: clamp(2.35rem, 4.6vw, 3.4rem);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--heading-color);
+}
+
+.section-line {
+  width: 0;
+  max-width: 9rem;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--color-contrast);
+  box-shadow: 0 0 12px var(--color-contrast);
+  opacity: 0.95;
+  transform-origin: left center;
+  transition: width 0.85s cubic-bezier(.22, .61, .36, 1), opacity 0.3s ease;
+  margin: 1.1rem 0;
+}
+
+.section-line.reveal-visible {
+  width: 9rem;
+  animation: sectionLineGlow 2.2s ease 0.85s forwards;
+}
+
+@keyframes sectionLineGlow {
+  0% { box-shadow: 0 0 12px var(--color-contrast); }
+  55% { box-shadow: 0 0 20px color-mix(in oklab, var(--color-contrast) 85%, white); }
+  100% { box-shadow: 0 0 12px var(--color-contrast); }
+}
+
+.section-lead {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin: 0;
 }
 
 img, svg, video, canvas { display: block; max-width: 100%; }
@@ -226,5 +270,11 @@ h1, h2, h3, h4, h5, h6 {
     transform: none !important;
     filter: none !important;
     transition: none !important;
+  }
+  .section-line,
+  .section-line.reveal-visible {
+    width: 9rem;
+    transition: none;
+    animation: none;
   }
 }

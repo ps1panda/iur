@@ -1,20 +1,6 @@
 import type { Metadata } from "next";
-import { Montserrat, Roboto } from "next/font/google";
+import type { ReactNode } from "react";
 import "./globals.css";
-
-const roboto = Roboto({
-  variable: "--font-roboto",
-  display: "swap",
-  subsets: ["latin", "cyrillic"],
-  weight: ["300", "400", "500", "700"],
-});
-
-const montserrat = Montserrat({
-  variable: "--font-heading",
-  display: "swap",
-  subsets: ["latin", "cyrillic"],
-  weight: ["600", "700", "800"],
-});
 
 export const metadata: Metadata = {
   title: "Invest Urban Rent — Управление коммерческой недвижимостью",
@@ -25,15 +11,11 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="ru">
-      <body
-        className={`${roboto.variable} ${montserrat.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -4,7 +4,6 @@ export { CustomBusiness } from "./components/CustomBusiness";
 export { Footer } from "./components/Footer";
 export { Header } from "./components/Header";
 export { Hero } from "./components/Hero";
-export { Owners } from "./components/Owners";
 export { Partners } from "./components/Partners";
 export { Projects } from "./components/Projects";
 export { ForOwners } from './components/ForOwners';
