@@ -75,29 +75,24 @@
 }
 
 .owners-title {
-  margin: 0;
-  font-size: clamp(28px, 4vw, 44px);
-  line-height: 1.1;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  color: #ffffff; /* белый заголовок */
-}
-
-.owners-line {
-  width: 88px;
-  height: 4px;
-  border-radius: 999px;
-  background: var(--color-contrast); /* фирменный акцент */
+  color: #ffffff;
 }
 
 .owners-intro {
   max-width: 820px;
   color: #e8ecff;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.owners-intro p {
+  margin: 0;
+  line-height: 1.6;
 }
 
 .owners-subtitle {
-  margin: 0 0 8px 0;
-  font-size: clamp(18px, 2.2vw, 24px);
+  margin: 0;
+  font-size: clamp(1.2rem, 2.1vw, 1.5rem);
   color: #ffffff;
 }
 
@@ -121,6 +116,8 @@
   border-radius: 16px;
   padding: 24px;
   backdrop-filter: blur(6px);
+  display: grid;
+  gap: 1rem;
 }
 
 .owners-heading {
@@ -148,11 +145,31 @@
   color: #eef2ff;
 }
 
+.owners-list--text {
+  display: grid;
+  gap: 1rem;
+}
+
+.owners-list--text p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(238, 242, 255, 0.85);
+}
+
+.owners-icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  display: block;
+}
+
 .owners-list .icon-contrast,
 .owners-list .icon-accent {
   margin-top: 2px;
-  font-size: 18px;
-  flex: 0 0 28px;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
 }
 
 /* Акценты (иконки) */
@@ -183,7 +200,7 @@
   color: #0b1426;
   font-weight: 700;
   text-decoration: none;
-  transition: transform 220ms var(--reveal-easing, cubic-bezier(.22,1,.36,1)), 
+  transition: transform 220ms var(--reveal-easing, cubic-bezier(.22,1,.36,1)),
               box-shadow 220ms var(--reveal-easing, cubic-bezier(.22,1,.36,1));
   box-shadow: 0 6px 18px rgba(255, 184, 0, 0.18);
 }
@@ -191,15 +208,4 @@
 .owners-button:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 24px rgba(255, 184, 0, 0.26);
-}
-
-/* ====== Мягкие входные анимации (совместимо с твоими reveal) ====== */
-.fade-in { opacity: 0; transform: translateY(12px); animation: ownersFadeIn 0.7s ease forwards; }
-.fade-delay-2 { animation-delay: 0.12s; }
-.fade-delay-3 { animation-delay: 0.2s; }
-.fade-delay-4 { animation-delay: 0.28s; }
-.fade-delay-5 { animation-delay: 0.36s; }
-
-@keyframes ownersFadeIn {
-  to { opacity: 1; transform: none; }
 }

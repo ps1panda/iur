@@ -29,9 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body
-        className={`${roboto.variable} ${montserrat.variable} antialiased`}
-      >
+      <body className={`${roboto.variable} ${montserrat.variable}`}>
         {children}
       </body>
     </html>
