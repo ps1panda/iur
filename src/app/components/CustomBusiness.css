@@ -153,16 +153,20 @@
   align-items: flex-start;
 }
 
+.cb-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
 .icon-yellow {
   color: #ffb800; /* иконки «жёлтые» остаются золотыми */
   margin-top: 4px;
-  flex-shrink: 0;
 }
 
 .icon-green {
   color: #00b86b;
   margin-top: 4px;
-  flex-shrink: 0;
 }
 
 /* Акцентный пункт — полностью золотой */
