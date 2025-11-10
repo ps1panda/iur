@@ -9,7 +9,7 @@ type Project = (typeof projects)[number];
 
 function ProjectCard({ project, delay = 0 }: { project: Project; delay?: number }) {
   // Появление карточки снизу-вверх со сдвигом
-  const cardRef = useScrollReveal<HTMLArticleElement>({
+  const cardRef = useScrollReveal<HTMLElement>({
     variant: 'up',
     distance: 24,
     delay,
@@ -20,7 +20,7 @@ function ProjectCard({ project, delay = 0 }: { project: Project; delay?: number 
       ref={cardRef}
       className="project-card reveal"
       data-reveal="up"
-      key={project.title}
+      aria-label={project.title}
     >
       <div className="project-image-wrapper">
         <Image
@@ -87,7 +87,7 @@ export function Projects() {
             <ProjectCard
               key={p.title}
               project={p}
-              // Статтер по 90 мс на карточку
+              // Стаггер по 90 мс на карточку
               delay={400 + i * 90}
             />
           ))}
