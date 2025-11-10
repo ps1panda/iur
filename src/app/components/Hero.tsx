@@ -6,8 +6,16 @@ import { useScrollReveal, useRevealGroup } from "@/hooks/useScrollReveal";
 
 export function Hero() {
   // Заголовок и подзаголовок
-  const titleRef = useScrollReveal<HTMLHeadingElement>({ variant: "up", distance: 20, delay: 0 });
-  const textRef  = useScrollReveal<HTMLParagraphElement>({ variant: "up", distance: 14, delay: 80 });
+  const titleRef = useScrollReveal<HTMLHeadingElement>({
+    variant: "up",
+    distance: 20,
+    delay: 0,
+  });
+  const textRef = useScrollReveal<HTMLParagraphElement>({
+    variant: "up",
+    distance: 14,
+    delay: 80,
+  });
 
   // Кнопки: стаггер по детям
   const buttonsGroupRef = useRevealGroup<HTMLDivElement>({
@@ -17,9 +25,12 @@ export function Hero() {
   });
 
   // Карточка статистики: scale контейнера + стаггер внутренних элементов
-  const statsCardRef  = useScrollReveal<HTMLDivElement>({ variant: "scale", delay: 120, duration: 700 });
+  const statsCardRef = useScrollReveal<HTMLDivElement>({
+    variant: "scale",
+    delay: 120,
+    duration: 700,
+  });
   const statsGroupRef = useRevealGroup<HTMLDivElement>({
-    selector: ".reveal, [data-reveal]",
     variant: "up",
     delayBase: 0,
     step: 60,
@@ -60,11 +71,7 @@ export function Hero() {
               <span>Rent</span>
             </h1>
 
-            <p
-              ref={textRef}
-              className="hero__subtitle reveal"
-              data-reveal="up"
-            >
+            <p ref={textRef} className="hero__subtitle reveal" data-reveal="up">
               Мы создаём и управляем коммерческими пространствами, превращая их
               в стабильный источник пассивного дохода для инвесторов и
               собственников.
@@ -99,7 +106,9 @@ export function Hero() {
           data-reveal="scale"
           style={{ ["--reveal-distance" as any]: "6px" }}
         >
-          <h2 className="reveal" data-reveal="fade">Ключевые показатели</h2>
+          <h2 className="reveal" data-reveal="fade">
+            Ключевые показатели
+          </h2>
           <dl>
             <div className="reveal" data-reveal="up" data-delay="0">
               <dt>Управляемая площадь</dt>
