@@ -4,6 +4,9 @@
    Базовые переменные бренда
    ========================= */
 :root {
+  --font-roboto: "Roboto";
+  --font-heading: "Montserrat";
+
   /* Брендовые цвета */
   --color-primary: #001dff;      /* фирменный синий */
   --color-primary-dark: #000d99; /* hover-синий */

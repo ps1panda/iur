@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import { useRevealGroup, useScrollReveal } from '@/hooks/useScrollReveal';
+import { InlineIcon } from './icons';
 import './ForOwners.css';
-import { FaFileContract, FaHistory, FaTools } from 'react-icons/fa';
 
 export function ForOwners() {
   // Анимации как в CustomBusiness
@@ -102,13 +102,28 @@ export function ForOwners() {
               <p className="owners-heading">Условия реализации Вашего проекта:</p>
               <ul ref={conditionsListRef} className="owners-list" data-reveal>
                 <li data-reveal>
-                  <FaHistory className="icon-contrast" />История арендных платежей — оцениваем надежность арендатора.
+                  <InlineIcon
+                    name="ownersHistory"
+                    baseClassName="owners-icon"
+                    className="icon-contrast"
+                  />
+                  История арендных платежей — оцениваем надежность арендатора.
                 </li>
                 <li data-reveal>
-                  <FaFileContract className="icon-contrast" />Оценка Договора аренды — разбираем обязательства и риски.
+                  <InlineIcon
+                    name="ownersFileContract"
+                    baseClassName="owners-icon"
+                    className="icon-contrast"
+                  />
+                  Оценка Договора аренды — разбираем обязательства и риски.
                 </li>
                 <li data-reveal>
-                  <FaTools className="icon-contrast" />Техническое состояние объекта, красные линии и инженерные коммуникации — выявляем недостатки и планируем их устранение.
+                  <InlineIcon
+                    name="ownersTools"
+                    baseClassName="owners-icon"
+                    className="icon-contrast"
+                  />
+                  Техническое состояние объекта, красные линии и инженерные коммуникации — выявляем недостатки и планируем их устранение.
                 </li>
               </ul>
             </div>
@@ -129,7 +144,7 @@ export function ForOwners() {
 
           {/* Кнопка */}
           <div className="owners-button-wrap">
-            <a ref={ctaRef} href="#contact" className="owners-button reveal" data-reveal="up">
+            <a ref={ctaRef} href="#contacts" className="owners-button reveal" data-reveal="up">
               Связаться
             </a>
           </div>
