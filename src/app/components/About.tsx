@@ -75,7 +75,7 @@ export function About() {
             <h2
               id="about-title"
               ref={titleRef}
-              className="reveal"
+              className="about-title section-heading reveal"
               data-reveal="up"
             >
               INVEST URBAN RENT
@@ -84,7 +84,7 @@ export function About() {
             {/* Линия под заголовком: ширина анимируется в CSS при .reveal-visible */}
             <div
               ref={lineRef}
-              className="about-line reveal"
+              className="about-line section-line reveal"
               data-reveal="fade"
               aria-hidden="true"
             />

@@ -1,9 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useRevealGroup, useScrollReveal } from '@/hooks/useScrollReveal';
 import { navItems } from '../data/content';
+import './Header.css';
 
 export function Header() {
   const pathname = usePathname();
@@ -17,49 +19,68 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Позиционирование:
-  // - На главной до скролла: absolute поверх hero
-  // - После скролла или на внутренних: fixed top-0
-  const positionClass =
-    isHome && !scrolled
-      ? 'absolute top-0 left-0 w-full'
-      : 'fixed top-0 left-0 w-full';
+  const linksGroupRef = useRevealGroup<HTMLDivElement>({
+    variant: 'down',
+    distance: 12,
+    delayBase: 140,
+    step: 80,
+  });
 
-  // Визуальный стиль при скролле
-  const scrolledClass =
-    scrolled || !isHome
-      ? 'bg-white/80 backdrop-blur-md shadow-sm text-zinc-900'
-      : 'bg-transparent backdrop-blur-sm text-white';
+  const ctaRef = useScrollReveal<HTMLAnchorElement>({
+    variant: 'up',
+    distance: 12,
+    delay: 220,
+  });
+
+  const headerClassName = useMemo(() => {
+    const classes = ['site-header'];
+    if (isHome && !scrolled) {
+      classes.push('site-header--floating');
+    } else {
+      classes.push('site-header--fixed');
+    }
+    if (scrolled || !isHome) {
+      classes.push('site-header--solid');
+    } else {
+      classes.push('site-header--transparent');
+    }
+    return classes.join(' ');
+  }, [isHome, scrolled]);
 
   return (
     <>
-      <header
-        className={`${positionClass} z-50 transition-all duration-500 ${scrolledClass}`}
-      >
-        <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-6 py-5">
+      <header className={headerClassName}>
+        <div className="site-header__inner">
           <Image
             src="/group.svg"
             alt="Логотип Invest Urban Rent"
             width={170}
             height={60}
-            className="h-10 w-auto transition-all duration-500"
+            className="site-header__logo"
             priority
           />
-          <div className="hidden items-center gap-10 md:flex">
-            <nav className="flex items-center gap-6 text-xs font-semibold uppercase tracking-[0.2em] transition-colors duration-300">
+          <div className="site-header__actions">
+            <nav
+              ref={linksGroupRef}
+              className="site-header__nav"
+              aria-label="Основная навигация"
+            >
               {navItems.map((item) => (
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className="no-underline transition-colors duration-200 hover:text-[var(--color-primary-dark)]"
+                  className="site-header__link"
+                  data-reveal
                 >
                   {item.label}
                 </a>
               ))}
             </nav>
             <a
+              ref={ctaRef}
               href="#contacts"
-              className="no-underline rounded-full bg-[var(--color-contrast)] px-9 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-950 transition-colors duration-200 hover:bg-[#ffd669]"
+              className="site-header__cta"
+              data-reveal
             >
               Связаться
             </a>
@@ -68,7 +89,7 @@ export function Header() {
       </header>
 
       {/* Спейсер, чтобы контент не подпрыгивал на внутренних страницах */}
-      {!isHome && <div aria-hidden className="h-[68px] md:h-[80px]" />}
+      {!isHome && <div aria-hidden className="header-spacer" />}
     </>
   );
 }

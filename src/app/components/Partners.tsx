@@ -1,10 +1,32 @@
+"use client";
+
 import Image from "next/image";
+import { useRevealGroup, useScrollReveal } from "@/hooks/useScrollReveal";
 import { partners } from "../data/content";
 import "./Partners.css";
 
 export function Partners() {
   // дублируем для бесшовной прокрутки
   const marqueeItems = [...partners, ...partners];
+
+  const titleRef = useScrollReveal<HTMLHeadingElement>({
+    variant: "up",
+    distance: 18,
+    delay: 0,
+  });
+
+  const marqueeRef = useScrollReveal<HTMLDivElement>({
+    variant: "up",
+    distance: 24,
+    delay: 160,
+  });
+
+  const logosGroupRef = useRevealGroup<HTMLUListElement>({
+    variant: "up",
+    distance: 16,
+    delayBase: 220,
+    step: 120,
+  });
 
   return (
     <section
@@ -15,13 +37,24 @@ export function Partners() {
       <div className="partners-container">
         <div className="partners-block">
           <div className="partners-header">
-            <h2 className="partners-title">Партнёры</h2>
+            <h2 ref={titleRef} className="partners-title section-heading reveal" data-reveal="up">
+              Партнёры
+            </h2>
           </div>
 
-          <div className="partners-marquee-wrap">
-            <ul className="partners-marquee" aria-hidden="true">
+          <div
+            ref={marqueeRef}
+            className="partners-marquee-wrap reveal"
+            data-reveal="up"
+          >
+            <ul
+              ref={logosGroupRef}
+              className="partners-marquee"
+              aria-hidden="true"
+              data-reveal
+            >
               {marqueeItems.map((partner, i) => (
-                <li key={`${partner.name}-${i}`} className="partner-tile">
+                <li key={`${partner.name}-${i}`} className="partner-tile" data-reveal>
                   <Image
                     src={partner.image}
                     alt={partner.name}

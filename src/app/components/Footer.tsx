@@ -1,10 +1,28 @@
+'use client';
+
+import { useRevealGroup } from '@/hooks/useScrollReveal';
+import './Footer.css';
+
 export function Footer() {
+  const footerGroupRef = useRevealGroup<HTMLDivElement>({
+    variant: 'up',
+    distance: 14,
+    delayBase: 0,
+    step: 120,
+  });
+
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-white/10 bg-transparent">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-3 px-6 py-10 text-center text-xs uppercase tracking-[0.35em] text-white/40 md:flex-row md:items-center md:justify-between">
-        <span className="text-sm font-semibold text-white/80">Invest Urban Rent</span>
-        <p>© {new Date().getFullYear()} Invest Urban Rent. Все права защищены.</p>
-        <a href="#privacy" className="hover:text-white">
+    <footer className="site-footer">
+      <div ref={footerGroupRef} className="site-footer__inner" data-reveal>
+        <span className="site-footer__brand" data-reveal>
+          Invest Urban Rent
+        </span>
+        <p className="site-footer__copy" data-reveal>
+          © {year} Invest Urban Rent. Все права защищены.
+        </p>
+        <a className="site-footer__link" data-reveal href="#privacy">
           Политика конфиденциальности
         </a>
       </div>
