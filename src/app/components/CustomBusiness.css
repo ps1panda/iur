@@ -76,36 +76,11 @@
 }
 
 .cb-title {
-  font-size: clamp(2.5rem, 5vw, 3.75rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
   color: #0c1f44;
-  margin-bottom: 1rem;
 }
 
-/* ===== Золотая линия под заголовком (как в About) ===== */
 .cb-line {
-  height: 3px;
-  width: 0;
-  max-width: 9rem;
-  border-radius: 9999px;
-  background-color: #ffb800;
-  box-shadow: 0 0 12px #ffb800;
-  transform-origin: left center;
-  transition: width 0.85s cubic-bezier(.22, .61, .36, 1), opacity 0.3s ease;
-  opacity: 0.95;
-  margin-bottom: 0.75rem;
-}
-
-.cb-line.reveal-visible {
-  width: 9rem;
-  animation: cbLineGlow 2.2s ease 0.85s 1 forwards;
-}
-
-@keyframes cbLineGlow {
-  0%   { box-shadow: 0 0 12px #ffb800; }
-  60%  { box-shadow: 0 0 20px #ffcc3a; }
-  100% { box-shadow: 0 0 12px #ffb800; }
+  margin: 1.1rem 0;
 }
 
 /* ===== Вступительный текст ===== */
@@ -113,13 +88,19 @@
   font-size: 1.125rem;
   line-height: 1.7;
   color: rgba(12,31,68,0.9); /* #0c1f44 с лёгкой прозрачностью */
+  display: grid;
+  gap: 0.85rem;
+}
+
+.cb-intro p {
+  margin: 0;
 }
 
 .cb-subtitle {
   font-size: 1.5rem;
   font-weight: 700;
   color: #0c1f44;
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
 
 /* ====== Сетка ====== */
@@ -138,10 +119,16 @@
   }
 }
 
+
 .cb-column {
   font-size: 1.125rem;
   line-height: 1.7;
   color: #0c1f44;
+  display: grid;
+  gap: 1rem;
+  background: rgba(12, 31, 68, 0.04);
+  border-radius: 24px;
+  padding: 1.75rem;
 }
 
 .cb-heading {
@@ -156,13 +143,14 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  display: grid;
+  gap: 0.85rem;
 }
 
 .cb-list li {
   display: flex;
   gap: 12px;
   align-items: flex-start;
-  margin-bottom: 14px;
 }
 
 .icon-yellow {
@@ -220,35 +208,9 @@
   box-shadow: 0 4px 14px rgba(12,31,68,0.18);
 }
 
-/* ====== Анимации появления ====== */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(25px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(25px);
-  animation: fadeInUp 0.8s ease forwards;
-}
-
-.fade-delay-1 { animation-delay: 0.1s; }
-.fade-delay-2 { animation-delay: 0.3s; }
-.fade-delay-3 { animation-delay: 0.5s; }
-.fade-delay-4 { animation-delay: 0.7s; }
-.fade-delay-5 { animation-delay: 0.9s; }
-
-/* ====== Reduced motion ====== */
 @media (prefers-reduced-motion: reduce) {
   .cb-line,
   .cb-line.reveal-visible {
-    transition: none;
-    animation: none;
-    width: 9rem;
-  }
-  .fade-in {
-    opacity: 1;
-    transform: none;
-    animation: none;
+    margin: 1.1rem 0;
   }
 }

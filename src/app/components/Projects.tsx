@@ -67,12 +67,12 @@ export function Projects() {
     <section id="projects" className="projects-section">
       <div className="projects-container">
         <div className="projects-header">
-          <h2 ref={titleRef} className="projects-title reveal" data-reveal="up">
+          <h2 ref={titleRef} className="projects-title section-heading reveal" data-reveal="up">
             Портфель реализованных проектов
           </h2>
           <div
             ref={lineRef}
-            className="projects-line reveal"
+            className="projects-line section-line reveal"
             data-reveal="fade"
             aria-hidden="true"
           />

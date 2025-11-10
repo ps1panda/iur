@@ -92,50 +92,14 @@
 }
 
 /* ===== Заголовок ===== */
-.about-heading h2 {
-  font-size: clamp(2.5rem, 5vw, 3.75rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+.about-title {
   color: #fff;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
-  margin-bottom: 1.5rem;
 }
 
-/* ===== Линия под заголовком (анимация при прокрутке) ===== */
+/* ===== Линия под заголовком ===== */
 .about-line {
-  height: 3px;
-  width: 0;           /* из нуля вырастает */
-  max-width: 9rem;    /* конечная ширина */
-  border-radius: 9999px;
-  background-color: #ffb800;
-  box-shadow: 0 0 12px #ffb800;
-  transform-origin: left center;
-  transition: width 0.85s cubic-bezier(.22, .61, .36, 1), opacity 0.3s ease;
-  opacity: 0.9;
-  margin-bottom: 20px; /* отступ после линии */
-}
-
-/* Активируется, когда у линии появляется .reveal-visible */
-.about-line.reveal-visible {
-  width: 9rem;
-  animation: aboutLineGlow 2.2s ease 0.85s 1 forwards;
-}
-
-/* «Дыхание» линии после прорисовки */
-@keyframes aboutLineGlow {
-  0%   { box-shadow: 0 0 12px #ffb800; }
-  60%  { box-shadow: 0 0 20px #ffcc3a; }
-  100% { box-shadow: 0 0 12px #ffb800; }
-}
-
-/* Уважение к reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .about-line,
-  .about-line.reveal-visible {
-    transition: none;
-    animation: none;
-    width: 9rem;
-  }
+  margin: 1.1rem 0;
 }
 
 /* ===== Текст ===== */
